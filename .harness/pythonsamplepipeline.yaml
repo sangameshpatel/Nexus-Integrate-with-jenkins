@@ -1,0 +1,35 @@
+pipeline:
+  name: python-sample-pipeline
+  identifier: pythonsamplepipeline
+  projectIdentifier: firstproject
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: githubconnect
+        repoName: Nexus-Integrate-with-jenkins
+        build: <+input>
+  stages:
+    - stage:
+        name: build-stage
+        identifier: buildstage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: ls -la
